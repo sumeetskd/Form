@@ -1,0 +1,31 @@
+<form action="">
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" ngModel pattern="[A-Za-z]{0,8}" minlength="3" maxlength="8" name="firstName"
+            #fname="ngModel" (change)="log(fname)" class="form-control" required>
+        <!-- #fname:will be used as a reference variable for ngModel object -->
+        <div class="alert alert-danger" *ngIf="fname.touched && fname.invalid">
+            <div *ngIf="fname.errors?.['minlength']">
+                Minimum Length required is 3
+            </div>
+            <div *ngIf="fname.errors?.['maxlength']">
+                Minimum Length required is 3
+            </div>
+            <div *ngIf="fname.errors?.['required']">
+                First Name is required
+            </div>
+            <div *ngIf="fname.errors?.['pattern']">
+                Only alphabets are allowed
+            </div>
+
+            <!-- First Name is required! -->
+        </div>
+    </div>
+    <div class="from-group">
+        <label for="comment">Comment</label>
+        <textarea id="comment" ngModel name="comment" #area_var="ngModel" cols="30" rows="10" class="form-control"
+            (change)="log(area_var)"></textarea>
+    </div>
+
+    <button class="btn btn-info" type="submit">Submit</button>
+</form>

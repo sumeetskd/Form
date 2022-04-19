@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+
+
+</head>
+
+<body>
+    <form action="">
+        <div class="form-group">
+            <label for="firstName">FirstName</label>
+            <input id="firstName" ngModel name="firstName" #firstName="ngModel" (change)="log(firstName)" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="comment">Comment</label>
+            <textarea id="comment" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div *ngFor="let d of data">
+            <label for="d.name">{{d.name}}</label>
+            <input type="checkbox" ngModel [name]="d.name" #name="ngModel" (change)="calc(name)" [value]="d.price">
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</body>
+
+</html>
